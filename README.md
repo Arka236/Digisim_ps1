@@ -5,6 +5,7 @@ Digital hardware design that reads up to 7 coordinate points from ROM, stores th
 This project implements a hardware-based coordinate processing system using discrete digital logic components. The design reads up to seven coordinate points (xi, yi) from ROM, stores them in registers, and systematically evaluates all valid pairs of points. For each pair, the circuit computes mathematical expressions such as Euclidean distance squared and a custom metric function, while continuously tracking the minimum result using comparator-based logic.
 
 The goal of this project is to demonstrate how algorithmic computation typically performed in software can be implemented using pure hardware datapath and control logic.
+
 # System Architecture
 The system consists of several functional blocks working together:
 ROM
@@ -21,6 +22,7 @@ Comparator
  ↓
 Minimum Value Register
 Each block performs a specific task in the coordinate processing pipeline.
+
 # Key Features
 1.Supports up to 7 coordinate points
 2.Stores coordinate data using dedicated X and Y registers
@@ -31,6 +33,7 @@ Each block performs a specific task in the coordinate processing pipeline.
   Custom metric function
 6.Tracks the minimum value automatically
 7.Fully clock-synchronized digital system
+
 # Hardware Components Used
 The design uses commonly available digital ICs such as:
 1.ROM – Stores coordinate values
@@ -41,6 +44,7 @@ The design uses commonly available digital ICs such as:
 6.74283 Adders – Arithmetic operations
 7.4585 Comparator – Minimum value detection
 These components collectively implement the system's datapath and control logic.
+
 # Working Principle
 # 1.Coordinate Storage
 Coordinate values are stored in ROM. A decoder enables specific registers to load the data, allowing the system to store multiple coordinate pairs simultaneously.
@@ -51,16 +55,18 @@ The counters operate similarly to a nested loop structure, ensuring that all val
 # 4.Arithmetic Computation
 For each selected pair, the system computes:
 Distance:
-$$
-d^2 = (x_i - x_j)^2 + (y_i - y_j)^2
-$$
+$$d^2 = (x_i - x_j)^2 + (y_i - y_j)^2$$
+
 Metric:
-$$Metric = (x_i y_i + x_j y_j) \pmodulo{i \times j}$$
+$$Metric = (x_i y_i + x_j y_j) \pmod{i \times j}$$
 These calculations are implemented using adders, subtractors, and multipliers
+
 # 5. Minimum Value Tracking
 Each computed result is compared with the current minimum value stored in a register. If the new value is smaller, a comparator triggers the load signal to update the minimum register
+
 # 6. Clock and Synchronization
 All registers, counters, and control logic operate using a single system clock. This ensures synchronized updates and prevents timing mismatches between arithmetic computations and register updates.
+
 # 7. Applications
 Although implemented as a learning project, the architecture demonstrates concepts used in:
 1. Hardware accelerators
@@ -68,6 +74,7 @@ Although implemented as a learning project, the architecture demonstrates concep
 3. Embedded datapath design
 4. FPGA and ASIC digital systems
 5. Algorithm implementation in hardware
+
 # 8. Learning Outcomes
 Through this project, the following digital design concepts are explored:
 1. Datapath and control architecture
@@ -76,6 +83,7 @@ Through this project, the following digital design concepts are explored:
 4. Register-based storage systems
 5. Comparator-driven decision logic
 6. Clock-synchronized digital systems
+
 # 9. Possible Improvements
 Future improvements could include:
 1. Implementing the design on an FPGA
@@ -83,6 +91,7 @@ Future improvements could include:
 3. Adding a hardware square-root unit for actual Euclidean distance
 4. Optimizing the metric computation unit
 5. Introducing a finite state machine (FSM) for better control logic
+
 # Author
 Arka Kar
 Electronics Engineering
