@@ -92,7 +92,3 @@ Future improvements could include:
 4. Optimizing the metric computation unit
 5. Introducing a finite state machine (FSM) for better control logic
 
-# Author
-Arka Kar
-Electronics Engineering
-IIT (BHU)
